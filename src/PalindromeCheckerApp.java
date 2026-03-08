@@ -29,7 +29,7 @@ public class PalindromeCheckerApp {
         }
 
 
-        // UC3 - Reverse String Based Palindrome Check
+        // UC3 - Reverse String Method
         String input2 = "racecar";
         String reversed = "";
 
@@ -38,10 +38,35 @@ public class PalindromeCheckerApp {
         }
 
         if (input2.equals(reversed)) {
-            System.out.println(input2 + " is a Palindrome (Reverse Method)");
+            System.out.println(input2 + " is a Palindrome (Reverse Method)\n");
         } else {
-            System.out.println(input2 + " is NOT a Palindrome (Reverse Method)");
+            System.out.println(input2 + " is NOT a Palindrome (Reverse Method)\n");
         }
+
+
+        // UC4 - Character Array Based Palindrome Check
+        String input3 = "radar";
+
+        char[] chars = input3.toCharArray();
+
+        int start = 0;
+        int end = chars.length - 1;
+
+        boolean isPalindromeArray = true;
+
+        while (start < end) {
+
+            if (chars[start] != chars[end]) {
+                isPalindromeArray = false;
+                break;
+            }
+
+            start++;
+            end--;
+        }
+
+        System.out.println("Input : " + input3);
+        System.out.println("Is Palindrome? : " + isPalindromeArray);
 
     }
 }
