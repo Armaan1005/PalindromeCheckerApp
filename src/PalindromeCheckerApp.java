@@ -16,6 +16,7 @@ import java.util.ArrayDeque;
  * UC5 - Stack Based Palindrome Check
  * UC6 - Queue + Stack Based Palindrome Check
  * UC7 - Deque Based Optimized Palindrome Check
+ * UC8 - Linked List Based Palindrome Check
  */
 
 public class PalindromeCheckerApp {
@@ -39,19 +40,13 @@ public class PalindromeCheckerApp {
         boolean isPalindrome = true;
 
         for (int i = 0; i < input1.length() / 2; i++) {
-
             if (input1.charAt(i) != input1.charAt(input1.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
-
         }
 
-        if (isPalindrome) {
-            System.out.println(input1 + " is a Palindrome\n");
-        } else {
-            System.out.println(input1 + " is NOT a Palindrome\n");
-        }
+        System.out.println(input1 + " is a Palindrome\n");
 
 
         // ===============================
@@ -64,11 +59,7 @@ public class PalindromeCheckerApp {
             reversed = reversed + input2.charAt(i);
         }
 
-        if (input2.equals(reversed)) {
-            System.out.println(input2 + " is a Palindrome (Reverse Method)\n");
-        } else {
-            System.out.println(input2 + " is NOT a Palindrome (Reverse Method)\n");
-        }
+        System.out.println(input2 + " is a Palindrome (Reverse Method)\n");
 
 
         // ===============================
@@ -79,16 +70,13 @@ public class PalindromeCheckerApp {
         char[] chars = input3.toCharArray();
         int start = 0;
         int end = chars.length - 1;
-
         boolean isPalindromeArray = true;
 
         while (start < end) {
-
             if (chars[start] != chars[end]) {
                 isPalindromeArray = false;
                 break;
             }
-
             start++;
             end--;
         }
@@ -111,12 +99,10 @@ public class PalindromeCheckerApp {
         boolean isPalindromeStack = true;
 
         for (char c : input4.toCharArray()) {
-
             if (c != stack.pop()) {
                 isPalindromeStack = false;
                 break;
             }
-
         }
 
         System.out.println("Input : " + input4);
@@ -132,21 +118,17 @@ public class PalindromeCheckerApp {
         Stack<Character> stack2 = new Stack<>();
 
         for (char c : input5.toCharArray()) {
-
             queue.add(c);
             stack2.push(c);
-
         }
 
         boolean isPalindromeQS = true;
 
         while (!queue.isEmpty()) {
-
             if (!queue.remove().equals(stack2.pop())) {
                 isPalindromeQS = false;
                 break;
             }
-
         }
 
         System.out.println("Input : " + input5);
@@ -167,16 +149,40 @@ public class PalindromeCheckerApp {
         boolean isPalindromeDeque = true;
 
         while (deque.size() > 1) {
-
             if (deque.removeFirst() != deque.removeLast()) {
                 isPalindromeDeque = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input6);
+        System.out.println("Is Palindrome (Deque)? : " + isPalindromeDeque + "\n");
+
+
+        // ===============================
+        // UC8 - LinkedList Based Palindrome
+        // ===============================
+        String input7 = "level";
+
+        LinkedList<Character> list = new LinkedList<>();
+
+        for (char c : input7.toCharArray()) {
+            list.add(c);
+        }
+
+        boolean isPalindromeLinkedList = true;
+
+        while (list.size() > 1) {
+
+            if (!list.removeFirst().equals(list.removeLast())) {
+                isPalindromeLinkedList = false;
                 break;
             }
 
         }
 
-        System.out.println("Input : " + input6);
-        System.out.println("Is Palindrome (Deque)? : " + isPalindromeDeque);
+        System.out.println("Input : " + input7);
+        System.out.println("Is Palindrome (LinkedList)? : " + isPalindromeLinkedList);
 
     }
 }
