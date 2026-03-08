@@ -1,6 +1,8 @@
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 /**
  * -----------------------------------------------------------
@@ -13,6 +15,7 @@ import java.util.LinkedList;
  * UC4 - Character Array Based Palindrome Check
  * UC5 - Stack Based Palindrome Check
  * UC6 - Queue + Stack Based Palindrome Check
+ * UC7 - Deque Based Optimized Palindrome Check
  */
 
 public class PalindromeCheckerApp {
@@ -147,7 +150,33 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Input : " + input5);
-        System.out.println("Is Palindrome (Queue + Stack)? : " + isPalindromeQS);
+        System.out.println("Is Palindrome (Queue + Stack)? : " + isPalindromeQS + "\n");
+
+
+        // ===============================
+        // UC7 - Deque Based Palindrome
+        // ===============================
+        String input6 = "refer";
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char c : input6.toCharArray()) {
+            deque.add(c);
+        }
+
+        boolean isPalindromeDeque = true;
+
+        while (deque.size() > 1) {
+
+            if (deque.removeFirst() != deque.removeLast()) {
+                isPalindromeDeque = false;
+                break;
+            }
+
+        }
+
+        System.out.println("Input : " + input6);
+        System.out.println("Is Palindrome (Deque)? : " + isPalindromeDeque);
 
     }
 }
