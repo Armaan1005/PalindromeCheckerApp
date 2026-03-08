@@ -17,6 +17,7 @@ import java.util.ArrayDeque;
  * UC6 - Queue + Stack Based Palindrome Check
  * UC7 - Deque Based Optimized Palindrome Check
  * UC8 - Linked List Based Palindrome Check
+ * UC9 - Recursive Palindrome Checker
  */
 
 public class PalindromeCheckerApp {
@@ -56,7 +57,7 @@ public class PalindromeCheckerApp {
         String reversed = "";
 
         for (int i = input2.length() - 1; i >= 0; i--) {
-            reversed = reversed + input2.charAt(i);
+            reversed += input2.charAt(i);
         }
 
         System.out.println(input2 + " is a Palindrome (Reverse Method)\n");
@@ -173,16 +174,38 @@ public class PalindromeCheckerApp {
         boolean isPalindromeLinkedList = true;
 
         while (list.size() > 1) {
-
             if (!list.removeFirst().equals(list.removeLast())) {
                 isPalindromeLinkedList = false;
                 break;
             }
-
         }
 
         System.out.println("Input : " + input7);
-        System.out.println("Is Palindrome (LinkedList)? : " + isPalindromeLinkedList);
+        System.out.println("Is Palindrome (LinkedList)? : " + isPalindromeLinkedList + "\n");
 
+
+        // ===============================
+        // UC9 - Recursive Palindrome
+        // ===============================
+        String input8 = "madam";
+
+        boolean result = checkRecursive(input8, 0, input8.length() - 1);
+
+        System.out.println("Input : " + input8);
+        System.out.println("Is Palindrome (Recursive)? : " + result);
+
+    }
+
+
+    // Recursive method
+    private static boolean checkRecursive(String s, int start, int end) {
+
+        if (start >= end)
+            return true;
+
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        return checkRecursive(s, start + 1, end - 1);
     }
 }
