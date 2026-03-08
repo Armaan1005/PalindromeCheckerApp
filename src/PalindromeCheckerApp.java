@@ -19,6 +19,7 @@ import java.util.ArrayDeque;
  * UC8  - Linked List Based Palindrome Check
  * UC9  - Recursive Palindrome Checker
  * UC10 - Case-Insensitive & Space-Ignored Palindrome
+ * UC11 - Object-Oriented Palindrome Service
  */
 
 public class PalindromeCheckerApp {
@@ -213,13 +214,25 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Input : " + input9);
-        System.out.println("Normalized : " + normalized);
-        System.out.println("Is Palindrome (Ignore spaces/case)? : " + isPalindromeNormalized);
+        System.out.println("Is Palindrome (Ignore spaces/case)? : " + isPalindromeNormalized + "\n");
+
+
+        // ===============================
+        // UC11 - Object Oriented Service
+        // ===============================
+        PalindromeService service = new PalindromeService();
+
+        String input10 = "radar";
+
+        boolean resultService = service.checkPalindrome(input10);
+
+        System.out.println("Input : " + input10);
+        System.out.println("Is Palindrome (OOP Service)? : " + resultService);
 
     }
 
 
-    // Recursive helper method
+    // UC9 Recursive helper
     private static boolean checkRecursive(String s, int start, int end) {
 
         if (start >= end)
@@ -229,5 +242,29 @@ public class PalindromeCheckerApp {
             return false;
 
         return checkRecursive(s, start + 1, end - 1);
+    }
+}
+
+
+// ===============================
+// UC11 Service Class
+// ===============================
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+
+            if (input.charAt(start) != input.charAt(end))
+                return false;
+
+            start++;
+            end--;
+        }
+
+        return true;
     }
 }
