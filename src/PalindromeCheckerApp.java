@@ -9,15 +9,16 @@ import java.util.ArrayDeque;
  * MAIN CLASS - PalindromeCheckerApp
  * -----------------------------------------------------------
  *
- * UC1 - Application Entry & Welcome Message
- * UC2 - Hardcoded Palindrome Validation
- * UC3 - Reverse String Palindrome Check
- * UC4 - Character Array Based Palindrome Check
- * UC5 - Stack Based Palindrome Check
- * UC6 - Queue + Stack Based Palindrome Check
- * UC7 - Deque Based Optimized Palindrome Check
- * UC8 - Linked List Based Palindrome Check
- * UC9 - Recursive Palindrome Checker
+ * UC1  - Application Entry & Welcome Message
+ * UC2  - Hardcoded Palindrome Validation
+ * UC3  - Reverse String Palindrome Check
+ * UC4  - Character Array Based Palindrome Check
+ * UC5  - Stack Based Palindrome Check
+ * UC6  - Queue + Stack Based Palindrome Check
+ * UC7  - Deque Based Optimized Palindrome Check
+ * UC8  - Linked List Based Palindrome Check
+ * UC9  - Recursive Palindrome Checker
+ * UC10 - Case-Insensitive & Space-Ignored Palindrome
  */
 
 public class PalindromeCheckerApp {
@@ -192,12 +193,33 @@ public class PalindromeCheckerApp {
         boolean result = checkRecursive(input8, 0, input8.length() - 1);
 
         System.out.println("Input : " + input8);
-        System.out.println("Is Palindrome (Recursive)? : " + result);
+        System.out.println("Is Palindrome (Recursive)? : " + result + "\n");
+
+
+        // ===============================
+        // UC10 - Ignore Spaces & Case
+        // ===============================
+        String input9 = "A man a plan a canal Panama";
+
+        String normalized = input9.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        boolean isPalindromeNormalized = true;
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindromeNormalized = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input9);
+        System.out.println("Normalized : " + normalized);
+        System.out.println("Is Palindrome (Ignore spaces/case)? : " + isPalindromeNormalized);
 
     }
 
 
-    // Recursive method
+    // Recursive helper method
     private static boolean checkRecursive(String s, int start, int end) {
 
         if (start >= end)
