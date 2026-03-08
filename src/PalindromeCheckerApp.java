@@ -1,10 +1,27 @@
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+
+/**
+ * -----------------------------------------------------------
+ * MAIN CLASS - PalindromeCheckerApp
+ * -----------------------------------------------------------
+ *
+ * UC1 - Application Entry & Welcome Message
+ * UC2 - Hardcoded Palindrome Validation
+ * UC3 - Reverse String Palindrome Check
+ * UC4 - Character Array Based Palindrome Check
+ * UC5 - Stack Based Palindrome Check
+ * UC6 - Queue + Stack Based Palindrome Check
+ */
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
+        // ===============================
         // UC1 - Welcome Message
+        // ===============================
         System.out.println("======================================");
         System.out.println(" Welcome to the Palindrome Checker ");
         System.out.println("======================================");
@@ -12,7 +29,9 @@ public class PalindromeCheckerApp {
         System.out.println("System initialized successfully.\n");
 
 
+        // ===============================
         // UC2 - Hardcoded Palindrome Check
+        // ===============================
         String input1 = "madam";
         boolean isPalindrome = true;
 
@@ -22,6 +41,7 @@ public class PalindromeCheckerApp {
                 isPalindrome = false;
                 break;
             }
+
         }
 
         if (isPalindrome) {
@@ -31,7 +51,9 @@ public class PalindromeCheckerApp {
         }
 
 
+        // ===============================
         // UC3 - Reverse String Method
+        // ===============================
         String input2 = "racecar";
         String reversed = "";
 
@@ -46,12 +68,15 @@ public class PalindromeCheckerApp {
         }
 
 
+        // ===============================
         // UC4 - Character Array Method
+        // ===============================
         String input3 = "radar";
 
         char[] chars = input3.toCharArray();
         int start = 0;
         int end = chars.length - 1;
+
         boolean isPalindromeArray = true;
 
         while (start < end) {
@@ -69,29 +94,60 @@ public class PalindromeCheckerApp {
         System.out.println("Is Palindrome? : " + isPalindromeArray + "\n");
 
 
-        // UC5 - Stack Based Palindrome Check
+        // ===============================
+        // UC5 - Stack Based Palindrome
+        // ===============================
         String input4 = "noon";
 
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
         for (char c : input4.toCharArray()) {
             stack.push(c);
         }
 
         boolean isPalindromeStack = true;
 
-        // Pop and compare
         for (char c : input4.toCharArray()) {
 
             if (c != stack.pop()) {
                 isPalindromeStack = false;
                 break;
             }
+
         }
 
         System.out.println("Input : " + input4);
-        System.out.println("Is Palindrome (Stack)? : " + isPalindromeStack);
+        System.out.println("Is Palindrome (Stack)? : " + isPalindromeStack + "\n");
+
+
+        // ===============================
+        // UC6 - Queue + Stack Method
+        // ===============================
+        String input5 = "civic";
+
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack2 = new Stack<>();
+
+        for (char c : input5.toCharArray()) {
+
+            queue.add(c);
+            stack2.push(c);
+
+        }
+
+        boolean isPalindromeQS = true;
+
+        while (!queue.isEmpty()) {
+
+            if (!queue.remove().equals(stack2.pop())) {
+                isPalindromeQS = false;
+                break;
+            }
+
+        }
+
+        System.out.println("Input : " + input5);
+        System.out.println("Is Palindrome (Queue + Stack)? : " + isPalindromeQS);
 
     }
 }
