@@ -4,38 +4,39 @@
  * -----------------------------------------------------------
  *
  * Use Case 1: Application Entry & Welcome Message
- *
- * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
- *
- * At this stage the application:
- * - Starts execution from main() method
- * - Displays a welcome message
- * - Shows application version
- *
- * No palindrome logic is implemented yet.
- *
- * @author Developer
- * @version 1.0
+ * Use Case 2: Hardcoded Palindrome Validation
  */
 
 public class PalindromeCheckerApp {
 
-    /**
-     * Application Entry Point
-     * This method is executed first when JVM runs the program.
-     */
-
     public static void main(String[] args) {
 
-        System.out.println("====================================");
+        // UC1 - Welcome Message
+        System.out.println("======================================");
         System.out.println(" Welcome to the Palindrome Checker ");
-        System.out.println(" Management System");
-        System.out.println("====================================");
-
+        System.out.println("======================================");
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
+        System.out.println();
+
+        // UC2 - Hardcoded Palindrome Check
+        String input = "madam";   // Hardcoded string
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < input.length() / 2; i++) {
+
+            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+
+        }
+
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome");
+        } else {
+            System.out.println(input + " is NOT a Palindrome");
+        }
 
     }
 }
